@@ -7,6 +7,7 @@ import {
   validate,
   type FileTab,
 } from "@rotorsoft/act-diagram";
+import "@rotorsoft/act-diagram/styles.css";
 import "./styles.css";
 
 // VS Code webview API
@@ -62,8 +63,10 @@ function App() {
   const [files, setFiles] = useState<FileTab[]>([]);
   const [fileErrors, setFileErrors] = useState<Record<string, string>>({});
 
-  // Listen for messages from the extension
+  // Signal readiness and listen for messages from the extension
   useEffect(() => {
+    vscode.postMessage({ type: "ready" });
+
     const handler = (event: MessageEvent) => {
       const msg = event.data;
       switch (msg.type) {

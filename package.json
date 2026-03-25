@@ -35,10 +35,9 @@
     "lint": "eslint src"
   },
   "dependencies": {
-    "@rotorsoft/act-diagram": "^0.2.2"
+    "@rotorsoft/act-diagram": "^0.3.0"
   },
   "devDependencies": {
-    "@tailwindcss/vite": "^4.1.18",
     "@types/node": "^22.0.0",
     "@types/react": "^19.2.14",
     "@types/react-dom": "^19.2.3",
@@ -48,7 +47,6 @@
     "esbuild": "^0.25.0",
     "react": "^19.2.4",
     "react-dom": "^19.2.4",
-    "tailwindcss": "^4.1.18",
     "typescript": "~5.9.3",
     "vite": "^7.3.1"
   }

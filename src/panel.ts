@@ -17,7 +17,7 @@ export class DiagramPanel {
   private root: string;
 
   static createOrShow(context: vscode.ExtensionContext) {
-    const column = vscode.ViewColumn.Beside;
+    const column = vscode.ViewColumn.Two;
 
     if (DiagramPanel.instance) {
       DiagramPanel.instance.panel.reveal(column);
@@ -71,8 +71,7 @@ export class DiagramPanel {
     // Watch diagnostics
     this.setupDiagnostics();
 
-    // Initial scan
-    this.scanWorkspace();
+    // Scan is triggered when webview sends "ready"
   }
 
   private async scanWorkspace() {
@@ -181,6 +180,10 @@ export class DiagramPanel {
   }
 
   private onMessage(msg: { type: string; file?: string; line?: number; col?: number }) {
+    if (msg.type === "ready") {
+      this.scanWorkspace();
+      return;
+    }
     if (msg.type === "navigate" && msg.file && msg.line !== undefined) {
       const absPath = path.join(this.root, msg.file);
       const uri = vscode.Uri.file(absPath);
@@ -220,7 +223,7 @@ export class DiagramPanel {
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta http-equiv="Content-Security-Policy"
-    content="default-src 'none'; style-src ${webview.cspSource} 'unsafe-inline'; script-src 'nonce-${nonce}'; font-src ${webview.cspSource};" />
+    content="default-src 'none'; style-src ${webview.cspSource} 'unsafe-inline'; script-src 'nonce-${nonce}' 'unsafe-eval'; font-src ${webview.cspSource}; img-src ${webview.cspSource} data:;" />
   <link rel="stylesheet" href="${styleUri}" />
   <title>Act Diagram</title>
   <style>

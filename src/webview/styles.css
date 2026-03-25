@@ -1,6 +1,3 @@
-@import "tailwindcss";
-@source "../../../node_modules/@rotorsoft/act-diagram/dist/**/*.js";
-
 html,
 body,
 #root {
