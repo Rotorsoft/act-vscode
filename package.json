@@ -2,7 +2,7 @@
   "name": "act-vscode",
   "displayName": "Act Diagram",
   "description": "Interactive event-sourcing diagrams for the @rotorsoft/act framework",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "publisher": "rotorsoft",
   "license": "MIT",
   "repository": {

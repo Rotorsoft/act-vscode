@@ -1,3 +1,10 @@
+## [1.0.1](https://github.com/Rotorsoft/act-vscode/compare/v1.0.0...v1.0.1) (2026-03-25)
+
+
+### Bug Fixes
+
+* update marketplace listing with icon and keywords ([75a24e8](https://github.com/Rotorsoft/act-vscode/commit/75a24e87b3a55382094efa0cc0560603d155ea3a))
+
 # 1.0.0 (2026-03-25)
 
 
