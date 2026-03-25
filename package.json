@@ -31,7 +31,7 @@
     "watch:ext": "node esbuild.mjs --watch",
     "watch:webview": "vite build --watch",
     "dev": "concurrently \"pnpm watch:ext\" \"pnpm watch:webview\"",
-    "package": "pnpm build && vsce package --no-dependencies",
+    "package": "pnpm build && npx @vscode/vsce package --no-dependencies",
     "lint": "eslint src"
   },
   "dependencies": {
