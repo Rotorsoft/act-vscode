@@ -1,0 +1,55 @@
+{
+  "name": "act-vscode",
+  "displayName": "Act Diagram",
+  "description": "Interactive event-sourcing diagrams for the @rotorsoft/act framework",
+  "version": "0.0.1",
+  "publisher": "rotorsoft",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Rotorsoft/act-vscode"
+  },
+  "engines": {
+    "vscode": "^1.100.0"
+  },
+  "categories": ["Visualization"],
+  "activationEvents": [],
+  "main": "./dist/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "act.openDiagram",
+        "title": "Act: Open Diagram"
+      }
+    ]
+  },
+  "scripts": {
+    "clean": "rm -rf dist",
+    "build:ext": "node esbuild.mjs --production",
+    "build:webview": "vite build",
+    "build": "pnpm build:ext && pnpm build:webview",
+    "watch:ext": "node esbuild.mjs --watch",
+    "watch:webview": "vite build --watch",
+    "dev": "concurrently \"pnpm watch:ext\" \"pnpm watch:webview\"",
+    "package": "pnpm build && vsce package --no-dependencies",
+    "lint": "eslint src"
+  },
+  "dependencies": {
+    "@rotorsoft/act-diagram": "^0.2.2"
+  },
+  "devDependencies": {
+    "@tailwindcss/vite": "^4.1.18",
+    "@types/node": "^22.0.0",
+    "@types/react": "^19.2.14",
+    "@types/react-dom": "^19.2.3",
+    "@types/vscode": "^1.100.0",
+    "@vitejs/plugin-react": "^5.2.0",
+    "concurrently": "^9.1.0",
+    "esbuild": "^0.25.0",
+    "react": "^19.2.4",
+    "react-dom": "^19.2.4",
+    "tailwindcss": "^4.1.18",
+    "typescript": "~5.9.3",
+    "vite": "^7.3.1"
+  }
+}

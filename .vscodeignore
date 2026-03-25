@@ -1,0 +1,10 @@
+.vscode/**
+.vscode-test/**
+src/**
+node_modules/**
+!dist/**
+!node_modules/@rotorsoft/act-diagram/**
+tsconfig*.json
+esbuild.mjs
+vite.config.ts
+*.map
