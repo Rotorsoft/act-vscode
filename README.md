@@ -1,66 +1,70 @@
 # Act Diagram for VS Code
 
-Interactive event-sourcing diagrams for the [@rotorsoft/act](https://github.com/Rotorsoft/act-root) framework, embedded in a VS Code WebView panel.
+Visualize your [@rotorsoft/act](https://github.com/Rotorsoft/act-root) event-sourcing domain models as interactive diagrams, right inside VS Code.
 
 ## Features
 
-- **Embedded diagram** — Renders Act domain models directly in a VS Code panel
-- **Live refresh** — Diagram updates as you edit TypeScript files
-- **Click-to-navigate** — Click any state, action, event, reaction, or projection to jump to its definition
-- **LSP diagnostics** — TypeScript errors are overlaid on diagram slices
-- **Session persistence** — Panel state survives tab switches via `retainContextWhenHidden`
+### Live Domain Model Visualization
 
-## Usage
+See your entire Act architecture at a glance — states, actions, events, reactions, projections, and slices — rendered as an interactive diagram in a side panel.
 
-1. Open a workspace containing Act definitions
-2. Run **Cmd+Shift+P** → `Act: Open Diagram`
-3. The diagram panel opens on the right, scanning your workspace for `.ts`/`.tsx` files
+### Real-Time Updates
 
-## Development
+The diagram updates automatically as you edit your TypeScript files. No need to save or refresh — changes appear instantly.
 
-```bash
-# Install dependencies
-pnpm install
+### Click-to-Navigate
 
-# Build extension + webview
-pnpm build
+Click any element in the diagram to jump directly to its definition in your source code:
+- **States** — opens the `state()` declaration
+- **Actions** — jumps to the `.on()` definition
+- **Events** — navigates to the `.emits()` declaration
+- **Reactions** — finds the `.do()` handler
+- **Projections** — locates the `projection()` builder
+- **Guards** — highlights the invariant definition
 
-# Watch mode (both extension and webview)
-pnpm dev
+### TypeScript Error Overlay
 
-# Package as .vsix
-pnpm package
-```
+TypeScript errors from VS Code's language service are forwarded to the diagram. Slices with errors are visually marked, helping you spot issues in context.
 
-### Testing locally
+### Multi-Tab Navigation
 
-1. Open this folder in VS Code
-2. Press **F5** to launch the Extension Development Host
-3. In the new window, run `Act: Open Diagram`
+When your project has multiple `act()` orchestrators, the diagram shows tabs for each entry point so you can switch between different domain contexts.
 
-## Architecture
+## Getting Started
 
-```
-Extension Host (Node.js)          WebView (Browser)
-┌─────────────────────┐          ┌─────────────────────┐
-│  extension.ts       │          │  main.tsx            │
-│  - registers cmd    │          │  - React app         │
-│                     │          │  - extractModel()    │
-│  panel.ts           │◄─ready──│  - Diagram component │
-│  - scans workspace  │─files──►│  - navigateToCode()  │
-│  - watches changes  │─diag───►│                      │
-│  - opens files      │◄─nav────│                      │
-└─────────────────────┘          └─────────────────────┘
-```
+1. Install the extension from the VS Code Marketplace
+2. Open a workspace containing Act framework definitions (`.ts` / `.tsx` files)
+3. Open the command palette: **Cmd+Shift+P** (macOS) or **Ctrl+Shift+P** (Windows/Linux)
+4. Run `Act: Open Diagram`
+5. The diagram panel opens on the right side of your editor
 
-- **Extension host** scans `.ts`/`.tsx` files, watches for changes, and forwards VS Code diagnostics
-- **WebView** receives files via `postMessage`, extracts the domain model, and renders the interactive diagram
-- **Navigation** flows both ways: click a diagram node → extension opens the file; edit a file → webview updates the diagram
+## Commands
 
-## Dependencies
+| Command | Description |
+|---------|-------------|
+| `Act: Open Diagram` | Open the Act diagram panel |
 
-- [`@rotorsoft/act-diagram`](https://www.npmjs.com/package/@rotorsoft/act-diagram) — Model extraction, validation, and React diagram component (includes pre-built CSS)
+## Requirements
+
+- VS Code 1.100.0 or later
+- A workspace with [@rotorsoft/act](https://www.npmjs.com/package/@rotorsoft/act) TypeScript definitions
+
+## How It Works
+
+The extension scans your workspace for `.ts` and `.tsx` files, transpiles them using [Sucrase](https://github.com/alangpierce/sucrase), and evaluates them against mock Act builders to extract the domain model structure — all locally, without running your application code.
+
+The extracted model is rendered as an interactive SVG diagram with pan, zoom, and click navigation.
+
+## Related
+
+- [@rotorsoft/act](https://github.com/Rotorsoft/act-root) — The Act event-sourcing framework
+- [@rotorsoft/act-diagram](https://www.npmjs.com/package/@rotorsoft/act-diagram) — The diagram extraction and rendering library
+- [act-nvim](https://github.com/Rotorsoft/act-nvim) — Act diagrams for Neovim
+
+## Contributing
+
+See the [GitHub repository](https://github.com/Rotorsoft/act-vscode) for development setup and contribution guidelines.
 
 ## License
 
-MIT
+[MIT](LICENSE)

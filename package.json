@@ -9,11 +9,26 @@
     "type": "git",
     "url": "https://github.com/Rotorsoft/act-vscode"
   },
+  "icon": "icon.png",
+  "galleryBanner": {
+    "color": "#0a0a0a",
+    "theme": "dark"
+  },
+  "keywords": [
+    "event-sourcing",
+    "CQRS",
+    "domain-driven-design",
+    "diagram",
+    "visualization",
+    "act",
+    "typescript"
+  ],
   "engines": {
     "vscode": "^1.100.0"
   },
   "categories": [
-    "Visualization"
+    "Visualization",
+    "Other"
   ],
   "activationEvents": [],
   "main": "./dist/extension.js",
