@@ -1,3 +1,10 @@
+# [1.1.0](https://github.com/Rotorsoft/act-vscode/compare/v1.0.1...v1.1.0) (2026-03-26)
+
+
+### Features
+
+* use act-diagram icon and add screenshot to README ([f4338b4](https://github.com/Rotorsoft/act-vscode/commit/f4338b41e5fff46432d93594e307d499a0f5d339))
+
 ## [1.0.1](https://github.com/Rotorsoft/act-vscode/compare/v1.0.0...v1.0.1) (2026-03-25)
 
 
