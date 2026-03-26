@@ -52,6 +52,7 @@ export class DiagramPanel {
     this.panel.webview.html = this.getHtml();
     this.panel.iconPath = vscode.Uri.joinPath(
       context.extensionUri,
+      "media",
       "icon.svg"
     );
 

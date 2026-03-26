@@ -4,6 +4,7 @@
 src/**
 node_modules/**
 !dist/**
+!media/**
 tsconfig*.json
 esbuild.mjs
 vite.config.ts

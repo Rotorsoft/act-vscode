@@ -2,6 +2,8 @@
 
 Visualize your [@rotorsoft/act](https://github.com/Rotorsoft/act-root) event-sourcing domain models as interactive diagrams, right inside VS Code.
 
+![Act Diagram in VS Code](media/act-diagram.png)
+
 ## Features
 
 ### Live Domain Model Visualization

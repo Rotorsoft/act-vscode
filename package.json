@@ -36,7 +36,11 @@
     "commands": [
       {
         "command": "act.openDiagram",
-        "title": "Act: Open Diagram"
+        "title": "Act: Open Diagram",
+        "icon": {
+          "light": "media/icon.svg",
+          "dark": "media/icon.svg"
+        }
       }
     ]
   },
